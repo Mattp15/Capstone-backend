@@ -24,3 +24,9 @@ def load_user(userid):
         return ##
     except models.DoesNotExist:
         pass
+
+
+if __name__ == '__main__':
+    models.initialize()
+    app.run(debug=DEBUG, port=PORT)
+    
