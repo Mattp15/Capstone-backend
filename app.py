@@ -5,6 +5,9 @@ from flask_login import LoginManager
 import os
 from dotenv import load_dotenv
 
+from resources.recipes import recipes
+from resources.user import users
+from resources.user_things import user_things
 
 load_dotenv()
 
@@ -21,7 +24,7 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(userid):
     try:
-        return ##
+        return models.User.get(models.User.id == userid)
     except models.DoesNotExist:
         pass
 
@@ -29,4 +32,3 @@ def load_user(userid):
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=DEBUG, port=PORT)
-    
