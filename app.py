@@ -28,6 +28,13 @@ def load_user(userid):
     except models.DoesNotExist:
         pass
 
+app.register_blueprint(users, url_prefix='/user')
+app.register_blueprint(recipes, url_prefix='/user/recipes')
+app.register_blueprint(user_things, url_prefix='/user/index')
+
+app.route('/')
+def testing():
+    return "test successful"
 
 if __name__ == '__main__':
     models.initialize()
