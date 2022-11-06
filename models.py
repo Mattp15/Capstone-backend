@@ -5,30 +5,32 @@ from flask_login import UserMixin
 DATABASE = SqliteDatabase('thigs.py')
 
 class User(UserMixin, Model):
-    email = CharField(unique=True)
-    password = CharField(unique=True)
     created = DateTimeField(default=datetime.datetime.now)
+    email = CharField(unique=True, null=True)
+    password = CharField(null=True)
     class Meta:
         database = DATABASE
 
 class User_Things(Model):
     dislik = BooleanField(default=False)
     favorite = BooleanField(default=False)
-    recipe = CharField()
+    recipe_id = IntegerField(null=True)
     recipe_created = DateTimeField(default=datetime.datetime.now)
-    user_id = ForeignKeyField(User, backref='id')
+    user_id = ForeignKeyField(User, null=True, backref='id')
     
 
     class Meta:
         database = DATABASE
 
 class Recipes(Model):
-    name = CharField()
-    nutrition = CharField()
-    ingredients = CharField()
-    instructions = CharField()
-    author_credit = CharField()
-    shopping_list = CharField()
+    author_credit = CharField(null=True)
+    ingredients = CharField(null=True)
+    instructions = CharField(null=True)
+    title = CharField(null=True)
+    protein = CharField(null=True)
+    shopping_list = CharField(null=True)
+    total_fat = CharField(null=True)
+    total_carbohydrate = CharField(null=True)
 
     class Meta:
         database = DATABASE

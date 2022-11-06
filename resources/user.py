@@ -6,6 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 users = Blueprint('users', 'users')
 user_things = Blueprint('user_things', 'user_things')
+recipes = Blueprint('recipes', 'recipes')
 
 @users.route('/', methods=["GET"])
 def get_logged_in_user():
@@ -57,6 +58,7 @@ def register():
         login_user(user)
         user_dict = model_to_dict(user)
         del user_dict['password']
+        user_things = models.User_Things.create(**user_dict)
 
         return jsonify(
             data = user_dict,
