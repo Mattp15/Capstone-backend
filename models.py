@@ -30,8 +30,8 @@ class User_Thing(Model):
     favorite = BooleanField(default=False)
     recipe_id = ForeignKeyField(Recipes, backref='recipes')
     recipe_created = DateTimeField(default=datetime.datetime.now)
-    user_id = ForeignKeyField(User, backref='user')
-    # user_id = IntegerField()
+    # user_id = ForeignKeyField(User, backref='user')
+    user_id = IntegerField()
     
 
     class Meta:

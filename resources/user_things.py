@@ -5,6 +5,26 @@ from flask_login import login_required, current_user
 
 user_things = Blueprint('user_things', 'user_things')
 
+@user_things.route('/', methods=["GET"])
+def get_current_user_recipes():
+        try:
+            user = current_user
+            user_dict = model_to_dict(user)
+            current_user_id = user_dict['id']
+            user_things = models.User_Thing.select().where(models.User_Thing.user_id == current_user_id)
+            thing_dict = [model_to_dict(thing) for thing in user_things]
+            return jsonify(
+                data = thing_dict,
+                message = "Pulled thing from databas",
+                status = 200
+            ), 200
+        except models.DoesNotExist:
+            return jsonify(
+                data = {},
+                message = "There is no such thing",
+                status = 404
+            ), 404
+
 @user_things.route('/<id>', methods=["POST", "GET", "DELETE", "PUT"])
 def create_user_thing(id):
     if request.method == "POST":
@@ -29,22 +49,22 @@ def create_user_thing(id):
                 message = "Failled to add to User_Things",
                 status = 409
             ), 409
-    if request.method == "GET":
-        try:
-            user = current_user
-            user_dict = model_to_dict(user)
-            user_id = user_dict['id']
-            print(user_id)
-            thing = models.User_Thing.get_by_id(id)
-            thing_dict = model_to_dict(thing)
-            return jsonify(
-                data = thing_dict,
-                message = "Pulled thing from databas",
-                status = 200
-            ), 200
-        except models.DoesNotExist:
-            return jsonify(
-                data = {},
-                message = "There is no such thing",
-                status = 404
-            ), 404
+    # if request.method == "GET":
+    #     try:
+    #         user = current_user
+    #         user_dict = model_to_dict(user)
+    #         current_user_id = user_dict['id']
+           
+    #         thing = models.User_Thing.select.where(models.User_Thing.user_id == current_user_id)
+    #         thing_dict = model_to_dict(thing)
+    #         return jsonify(
+    #             data = thing_dict,
+    #             message = "Pulled thing from databas",
+    #             status = 200
+    #         ), 200
+    #     except models.DoesNotExist:
+    #         return jsonify(
+    #             data = {},
+    #             message = "There is no such thing",
+    #             status = 404
+    #         ), 404
