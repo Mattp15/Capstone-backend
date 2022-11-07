@@ -11,12 +11,13 @@ class User(UserMixin, Model):
     class Meta:
         database = DATABASE
 
-class User_Things(Model):
-    dislik = BooleanField(default=False)
+class User_Thing(Model):
+    dislike = BooleanField(default=False)
     favorite = BooleanField(default=False)
     recipe_id = IntegerField()
     recipe_created = DateTimeField(default=datetime.datetime.now)
-    user_id = ForeignKeyField(User, to_field='id')
+    user_id = ForeignKeyField(User, backref='user_tings')
+    # user_id = IntegerField()
     
 
     class Meta:
@@ -37,6 +38,6 @@ class Recipes(Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User, User_Things, Recipes], safe=True)
+    DATABASE.create_tables([User, User_Thing, Recipes], safe=True)
     print("Connected to the DB and created tables if they didn't exist")
     DATABASE.close()

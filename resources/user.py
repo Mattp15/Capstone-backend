@@ -58,7 +58,7 @@ def register():
         login_user(user)
         user_dict = model_to_dict(user)
         del user_dict['password']
-        user_things = models.User_Things.create(**user_dict)
+
 
         return jsonify(
             data = user_dict,

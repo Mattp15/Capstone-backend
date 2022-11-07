@@ -6,9 +6,9 @@ from playhouse.shortcuts import model_to_dict
 recipes = Blueprint('recipes', 'recipes')
 
 #temporary for building
-@recipes.route('/', methods=["GET"])
-def get_all_recipes():
-    all_recipes = models.Recipes.get_by_id(1)
+@recipes.route('/<id>', methods=["GET"])
+def get_all_recipes(id):
+    all_recipes = models.Recipes.get_by_id(id)
     recipes_dict = model_to_dict(all_recipes)
     return jsonify(
         data = recipes_dict,

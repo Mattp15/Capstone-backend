@@ -30,7 +30,7 @@ def load_user(userid):
 
 app.register_blueprint(users, url_prefix='/user')
 app.register_blueprint(recipes, url_prefix='/recipes')
-app.register_blueprint(user_things, url_prefix='/index')
+app.register_blueprint(user_things, url_prefix='/user/index')
 
 
 
