@@ -6,31 +6,31 @@ DATABASE = SqliteDatabase('thigs.py')
 
 class User(UserMixin, Model):
     created = DateTimeField(default=datetime.datetime.now)
-    email = CharField(unique=True, null=True)
-    password = CharField(null=True)
+    email = CharField(unique=True)
+    password = CharField()
     class Meta:
         database = DATABASE
 
 class User_Things(Model):
     dislik = BooleanField(default=False)
     favorite = BooleanField(default=False)
-    recipe_id = IntegerField(null=True)
+    recipe_id = IntegerField()
     recipe_created = DateTimeField(default=datetime.datetime.now)
-    user_id = ForeignKeyField(User, null=True, backref='id')
+    user_id = ForeignKeyField(User, to_field='id')
     
 
     class Meta:
         database = DATABASE
 
 class Recipes(Model):
-    author_credit = CharField(null=True)
-    ingredients = CharField(null=True)
-    instructions = CharField(null=True)
-    title = CharField(null=True)
-    protein = CharField(null=True)
-    shopping_list = CharField(null=True)
-    total_fat = CharField(null=True)
-    total_carbohydrate = CharField(null=True)
+    author_credit = CharField()
+    ingredients = CharField()
+    instructions = CharField()
+    title = CharField(unique=True)
+    protein = CharField()
+    shopping_list = CharField()
+    total_fat = CharField()
+    total_carbohydrate = CharField()
 
     class Meta:
         database = DATABASE

@@ -5,8 +5,8 @@ from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
 users = Blueprint('users', 'users')
-user_things = Blueprint('user_things', 'user_things')
-recipes = Blueprint('recipes', 'recipes')
+# user_things = Blueprint('user_things', 'user_things')
+# recipes = Blueprint('recipes', 'recipes')
 
 @users.route('/', methods=["GET"])
 def get_logged_in_user():

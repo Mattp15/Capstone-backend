@@ -1,21 +1,21 @@
 import models
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
-from flask_login import login_required, current_user
+
 
 recipes = Blueprint('recipes', 'recipes')
 
 #temporary for building
 @recipes.route('/', methods=["GET"])
 def get_all_recipes():
-    all_recipes = models.Recipes.select()
+    all_recipes = models.Recipes.get_by_id(1)
     recipes_dict = model_to_dict(all_recipes)
     return jsonify(
         data = recipes_dict,
         message = "These are all the recipes in the database",
         status = 200
     ), 200
-    
+
 @recipes.route('/add', methods=["POST"])
 def create_recipe():
     payload = request.get_json()
