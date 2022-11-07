@@ -31,7 +31,10 @@ def create_user_thing(id):
             ), 409
     if request.method == "GET":
         try:
-
+            user = current_user
+            user_dict = model_to_dict(user)
+            user_id = user_dict['id']
+            print(user_id)
             thing = models.User_Thing.get_by_id(id)
             thing_dict = model_to_dict(thing)
             return jsonify(
