@@ -50,11 +50,17 @@ def login():
 #Log out current_user
 @users.route('/logout', methods=["GET"])
 def logout_user():
-    logout_user()
-    return jsonify(
-        message = "Logged out User",
-        status = 200
-    ), 200
+    try:
+        logout_user()
+        return jsonify(
+            message = "Logged out User",
+            status = 200
+        ), 200
+    except:
+        return jsonify(
+            message = "no user is logged in",
+            status = 404
+        ), 404
 
 #Register new user + logs in user as current_user
 @users.route('/register', methods=["POST"])
