@@ -4,7 +4,7 @@ from playhouse.shortcuts import model_to_dict
 from flask_login import login_required, current_user
 
 user_things = Blueprint('user_things', 'user_things')
-
+#Get's all of current users's User_Things
 @user_things.route('/', methods=["GET"])
 def get_current_user_recipes():
         try:
@@ -12,10 +12,11 @@ def get_current_user_recipes():
             user_dict = model_to_dict(user)
             current_user_id = user_dict['id']
             user_things = models.User_Thing.select().where(models.User_Thing.user_id == current_user_id)
-            thing_dict = [model_to_dict(thing) for thing in user_things]
+            things_dict = [model_to_dict(thing) for thing in user_things]
+            print(things_dict[0]['recipe_id']['id'])
             return jsonify(
-                data = thing_dict,
-                message = "Pulled thing from databas",
+                data = things_dict,
+                message = "Pulled things from databas",
                 status = 200
             ), 200
         except models.DoesNotExist:
@@ -25,7 +26,8 @@ def get_current_user_recipes():
                 status = 404
             ), 404
 
-@user_things.route('/<id>', methods=["POST", "GET", "DELETE", "PUT"])
+#Creates a User_Thing for current user/Deletes
+@user_things.route('/<id>', methods=["POST", "DELETE"])
 def create_user_thing(id):
     if request.method == "POST":
         try:
@@ -49,22 +51,3 @@ def create_user_thing(id):
                 message = "Failled to add to User_Things",
                 status = 409
             ), 409
-    # if request.method == "GET":
-    #     try:
-    #         user = current_user
-    #         user_dict = model_to_dict(user)
-    #         current_user_id = user_dict['id']
-           
-    #         thing = models.User_Thing.select.where(models.User_Thing.user_id == current_user_id)
-    #         thing_dict = model_to_dict(thing)
-    #         return jsonify(
-    #             data = thing_dict,
-    #             message = "Pulled thing from databas",
-    #             status = 200
-    #         ), 200
-    #     except models.DoesNotExist:
-    #         return jsonify(
-    #             data = {},
-    #             message = "There is no such thing",
-    #             status = 404
-    #         ), 404

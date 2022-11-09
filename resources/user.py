@@ -3,11 +3,18 @@ from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
+import re
+
 
 users = Blueprint('users', 'users')
-# user_things = Blueprint('user_things', 'user_things')
-# recipes = Blueprint('recipes', 'recipes')
 
+def is_valid(email):
+    email_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+    if re.fullmatch(email_regex, email):
+        return True
+    else:
+        return False
+#Get's current user
 @users.route('/', methods=["GET"])
 def get_logged_in_user():
     user_dict = model_to_dict(current_user)
@@ -18,6 +25,7 @@ def get_logged_in_user():
         status = 200
     ),200
 
+#User Login
 @users.route('/login', methods=["POST"])
 def login():
     payload = request.get_json()
@@ -32,12 +40,6 @@ def login():
                 message = "Logged in successfully",
                 status = 200
             ), 200
-        # else:
-        #     return jsonify(
-        #         data = {},
-        #         message = "Username or Password doesn't not match.",
-        #         message = 401
-        #     ), 401
     except models.DoesNotExist:
         return jsonify(
             data={},
@@ -45,23 +47,43 @@ def login():
             status = 401
         ), 401
 
+#Log out current_user
+@users.route('/logout', methods=["GET"])
+def logout_user():
+    logout_user()
+    return jsonify(
+        message = "Logged out User",
+        status = 200
+    ), 200
+
+#Register new user + logs in user as current_user
 @users.route('/register', methods=["POST"])
 def register():
     payload = request.get_json()
     payload['email'] = payload['email'].lower()
-    try:
-        models.User.get(models.User.email == payload['email'])
-        return jsonify(data={}, status={"code": 401, "message": "A user with that email already exists."})
-    except models.DoesNotExist:
-        payload['password'] = generate_password_hash(payload['password'])
-        user = models.User.create(**payload)
-        login_user(user)
-        user_dict = model_to_dict(user)
-        del user_dict['password']
-
-
+    if is_valid(payload['email']):
+        try:
+            models.User.get(models.User.email == payload['email'])
+            return jsonify(
+                data = {},
+                message = "A user with that email already exists.",
+                status = 401,
+            ), 401
+        except models.DoesNotExist:
+            payload['password'] = generate_password_hash(payload['password'])
+            user = models.User.create(**payload)
+            login_user(user)
+            user_dict = model_to_dict(user)
+            del user_dict['password']
+            return jsonify(
+                data = user_dict,
+                message = "Success",
+                status = 200
+            ), 200
+    else:
         return jsonify(
-            data = user_dict,
-            message = "Success",
-            status = 200
-        ), 200
+            data={},
+            message = "Email does not meet criteria",
+            status = 400
+        ), 400
+
