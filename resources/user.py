@@ -8,12 +8,7 @@ import re
 
 users = Blueprint('users', 'users')
 
-def is_valid(email):
-    email_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-    if re.fullmatch(email_regex, email):
-        return True
-    else:
-        return False
+
 #Get's current user
 @users.route('/', methods=["GET"])
 def get_logged_in_user():
@@ -93,3 +88,9 @@ def register():
             status = 400
         ), 400
 
+def is_valid(email):
+    email_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+    if re.fullmatch(email_regex, email):
+        return True
+    else:
+        return False
