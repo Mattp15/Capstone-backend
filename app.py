@@ -27,7 +27,7 @@ def load_user(userid):
         return models.User.get(models.User.id == userid)
     except models.DoesNotExist:
         pass
-    
+
 CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(recipes, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(user_things, origins=['http://localhost:3000'], supports_credentials=True)

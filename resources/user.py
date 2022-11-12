@@ -39,8 +39,8 @@ def login():
         return jsonify(
             data={},
             message = "Username or Password do not match",
-            status = 401
-        ), 401
+            status = 404
+        ), 404
 
 #Log out current_user
 @users.route('/logout', methods=["GET"])
