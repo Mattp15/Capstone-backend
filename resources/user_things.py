@@ -5,6 +5,16 @@ from flask_login import login_required, current_user
 
 user_things = Blueprint('user_things', 'user_things')
 #Get's all of current users's User_Things
+
+
+
+
+
+
+#! JUST DO THIS WHEN DEPLOYED ON POSTGRESS USE ARRAY OF OBJECTS FOR RECIPES IN USER_THING
+
+
+
 @user_things.route('/', methods=["GET"])
 def get_current_user_recipes():
         try:
@@ -13,7 +23,7 @@ def get_current_user_recipes():
             current_user_id = user_dict['id']
             user_things = models.User_Thing.select().where(models.User_Thing.user_id == current_user_id)
             things_dict = [model_to_dict(thing) for thing in user_things]
-            print(things_dict[0]['recipe_id']['id'])
+            print(things_dict[0]['recipe_id']['id'], 'broken?')
             return jsonify(
                 data = things_dict,
                 message = "Pulled things from databas",
@@ -51,3 +61,17 @@ def create_user_thing(id):
                 message = "Failled to add to User_Things",
                 status = 409
             ), 409
+    if request.method == "DELETE":
+        # payload = request.json()
+        try:
+            recipe_to_remove = models.User_Thing.delete()
+            recipe_to_remove_dict = model_to_dict(recipe_to_remove)
+            print(recipe_to_remove_dict)
+        except models.DoesNotExist:
+            return jsonify(
+                data = recipe_to_remove_dict,
+                message = "Does not exist in database",
+                status = 404
+            ), 404
+
+            
