@@ -45,10 +45,12 @@ def login():
 #Log out current_user
 @users.route('/logout', methods=["GET"])
 def logout_user():
+    # user = model_to_dict(current_user)
+
     try:
         logout_user()
         return jsonify(
-            message = "Logged out User",
+            message = f'User has been logged out',
             status = 200
         ), 200
     except:
