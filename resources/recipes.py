@@ -5,16 +5,42 @@ from playhouse.shortcuts import model_to_dict
 
 recipes = Blueprint('recipes', 'recipes')
 
-#temporary for building
+
+@recipes.route('/', methods=["GET"])
+def get_all_recipes():
+    try:
+        all_recipes = models.Recipes.select()
+        all_recipes_dict = [model_to_dict(recipe) for recipe in all_recipes]
+        return jsonify(
+            data = all_recipes_dict,
+            message = "Here are all the recipes in the database",
+            status = 200
+        ), 200
+    except:
+        return jsonify(
+            data = {},
+            message = "FAILED TO GET ALL RECIPES",
+            status = 404
+        ), 404
+        pass
+
+#gets recipe at index of id
 @recipes.route('/<id>', methods=["GET"])
-def get_all_recipes(id):
-    all_recipes = models.Recipes.get_by_id(id)
-    recipes_dict = model_to_dict(all_recipes)
-    return jsonify(
-        data = recipes_dict,
-        message = "These are all the recipes in the database",
-        status = 200
-    ), 200
+def get_recipe(id):
+    try:
+        recipe = models.Recipes.get_by_id(id)
+        recipe_dict = model_to_dict(recipe)
+        return jsonify(
+            data = recipe_dict,
+            message = "This is the requested recipe",
+            status = 200
+        ), 200
+    except models.DoesNotExist:
+        return jsonify(
+            data = {},
+            message = "This recipe ID does not exist",
+            status = 404
+        ), 404
 
 @recipes.route('/add', methods=["POST"])
 def create_recipe():
