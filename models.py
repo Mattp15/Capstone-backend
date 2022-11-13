@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 DATABASE = SqliteDatabase('thigs.SQLite')
 
+
 class User(UserMixin, Model):
     #add admin for adding recipies//changing user data on the web interface
     created = DateTimeField(default=datetime.datetime.now)
@@ -36,6 +37,7 @@ class User_Thing(Model):
 
     class Meta:
         database = DATABASE
+
 
 def initialize():
     DATABASE.connect()

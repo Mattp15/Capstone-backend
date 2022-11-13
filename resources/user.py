@@ -10,15 +10,23 @@ users = Blueprint('users', 'users')
 
 
 #Get's current user
-@users.route('/', methods=["GET"])
+@users.route('/account', methods=["GET"])
 def get_logged_in_user():
-    user_dict = model_to_dict(current_user)
-    user_dict.pop('password')
-    return jsonify(
-        data = user_dict,
-        message = "Current User",
-        status = 200
-    ),200
+    try:
+        user_dict = model_to_dict(current_user)
+        print(user_dict)
+        user_dict.pop('password')
+        return jsonify(
+            data = user_dict,
+            message = "Current User",
+            status = 200
+        ),200
+    except:
+        return jsonify(
+            data ={},
+            message = "No user logged in",
+            status = 404
+        ), 404
 
 #User Login
 @users.route('/login', methods=["POST"])
@@ -46,10 +54,12 @@ def login():
 @users.route('/logout', methods=["GET"])
 def logout_user():
     # user = model_to_dict(current_user)
-
+    
     try:
         logout_user()
+        user_dict = model_to_dict(current_user)
         return jsonify(
+            data = user_dict,
             message = f'User has been logged out',
             status = 200
         ), 200
