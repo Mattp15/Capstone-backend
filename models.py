@@ -34,7 +34,6 @@ class User_Thing(Model):
     recipe_created = DateTimeField(default=datetime.datetime.now)
     user_id = IntegerField()
     
-
     class Meta:
         database = DATABASE
 
