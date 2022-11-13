@@ -58,7 +58,7 @@ def create_user_thing(id):
                 status = 409
             ), 409
     elif request.method == "DELETE":
-        # payload = request.json()
+        #deletes the User_Thing table by user_id and User_Thing.id == passed param called id
         try:          
 
             deleted = models.User_Thing.delete().where(current_user == models.User_Thing.user_id and models.User_Thing.id == id)
@@ -66,15 +66,11 @@ def create_user_thing(id):
             # deleted_dict = [model_to_dict(thing) for thing in deleted]
             # deleted_dict = model_to_dict(deleted)
             return jsonify(
-                # data = deleted_dict,
-                message = "FUCK",
-                status = 200
+                status = 204
             ), 200
         except models.DoesNotExist:
             return jsonify(
-                # data = recipe_to_remove_dict,
-                # message = "Does not exist in database",
-                # status = 404
+
             ), 404
 
             

@@ -1,7 +1,7 @@
 import models
 from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
 import re
 
@@ -11,6 +11,7 @@ users = Blueprint('users', 'users')
 
 #Get's current user
 @users.route('/account', methods=["GET"])
+@login_required
 def get_logged_in_user():
     try:
         user_dict = model_to_dict(current_user)
