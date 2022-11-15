@@ -36,21 +36,22 @@ def get_current_user_recipes():
 @user_things.route('/<id>', methods=["POST", "DELETE"])
 def create_user_thing(id):
     if request.method == "POST":
+        payload = request.get_json()
         try:
-            recipe = models.Recipes.get_by_id(id)
-            recipe_dict = model_to_dict(recipe)
-            user_dict = model_to_dict(current_user)
-            new_thing = models.User_Thing.create(
-                recipe_id = recipe_dict['id'],
-                user_id = user_dict['id']
-            )
-            new_thing_dict = model_to_dict(new_thing)
-            print(new_thing_dict)
-            return jsonify(
-                data = new_thing_dict,
-                message = "Successfully added recipe to User_things",
-                status = 200
-            ), 200
+             recipe = models.Recipes.get_by_id(id)
+             recipe_dict = model_to_dict(recipe)
+             user_dict = model_to_dict(current_user)
+             new_thing = models.User_Thing.create(
+                **payload,
+                 recipe_id = recipe_dict['id'],
+                 user_id = user_dict['id']
+             )
+             new_thing_dict = model_to_dict(new_thing)
+             return jsonify(
+                 data = new_thing_dict,
+                 message = "Successfully added recipe to User_things",
+                 status = 200
+             ), 200
         except:
             return jsonify(
                 data={},

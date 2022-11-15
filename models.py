@@ -16,15 +16,15 @@ class User(UserMixin, Model):
 
 class Recipes(Model):
     author_credit = CharField()
+    calories = CharField()
+    carbohydrate = CharField()
+    fat = CharField()
     image = CharField()
-    calories = IntegerField()
-    carbohydrate = IntegerField()
-    fat = IntegerField()
-    ingredients = CharField()#Change to array of objects
-    instructions = CharField()#should be array of lists
+    ingredients = CharField()
+    instructions = CharField()
+    protein = CharField()
+    shopping_list = CharField()
     title = CharField(unique=True)
-    protein = IntegerField()
-    shopping_list = CharField()#change to array of objects
 
     class Meta:
         database = DATABASE
@@ -36,6 +36,7 @@ class User_Thing(Model):
     recipe_created = DateTimeField(default=datetime.datetime.now)
     user_id = IntegerField()
     
+
     class Meta:
         database = DATABASE
 
