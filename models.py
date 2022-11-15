@@ -16,13 +16,15 @@ class User(UserMixin, Model):
 
 class Recipes(Model):
     author_credit = CharField()
-    ingredients = CharField()
-    instructions = CharField()
+    image = CharField()
+    calories = IntegerField()
+    carbohydrate = IntegerField()
+    fat = IntegerField()
+    ingredients = CharField()#Change to array of objects
+    instructions = CharField()#should be array of lists
     title = CharField(unique=True)
-    protein = CharField()
-    shopping_list = CharField()
-    total_fat = CharField()
-    total_carbohydrate = CharField()
+    protein = IntegerField()
+    shopping_list = CharField()#change to array of objects
 
     class Meta:
         database = DATABASE
