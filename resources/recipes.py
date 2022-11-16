@@ -1,4 +1,4 @@
-import models
+import models, random
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
 
@@ -11,6 +11,7 @@ def get_all_recipes():
     try:
         all_recipes = models.Recipes.select()
         all_recipes_dict = [model_to_dict(recipe) for recipe in all_recipes]
+        random.shuffle(all_recipes_dict)        
         return jsonify(
             data = all_recipes_dict,
             message = "Here are all the recipes in the database",
