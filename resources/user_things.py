@@ -11,7 +11,7 @@ user_things = Blueprint('user_things', 'user_things')
 
 
 #! REALLY TRY TO GET THAT DELTE BY FOREIGN KEY ID WORKING
-
+#TODO Make a route to remove dislike and favorite by id, should just be user_thing id not recipe_id.id
 
 
 #Get's all of current users's User_Things
