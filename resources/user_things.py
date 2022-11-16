@@ -38,20 +38,39 @@ def create_user_thing(id):
     if request.method == "POST":
         payload = request.get_json()
         try:
-             recipe = models.Recipes.get_by_id(id)
-             recipe_dict = model_to_dict(recipe)
-             user_dict = model_to_dict(current_user)
-             new_thing = models.User_Thing.create(
-                **payload,
-                 recipe_id = recipe_dict['id'],
-                 user_id = user_dict['id']
-             )
-             new_thing_dict = model_to_dict(new_thing)
-             return jsonify(
-                 data = new_thing_dict,
-                 message = "Successfully added recipe to User_things",
-                 status = 200
-             ), 200
+            recipe = models.Recipes.get_by_id(id)
+            recipe_dict = model_to_dict(recipe)
+            user_dict = model_to_dict(current_user)
+            try:
+                check = models.User_Thing.select()
+                check_dict = [model_to_dict(thing) for thing in check]
+                x = range(len(check_dict))
+                print(x)
+                for i in range(len(check_dict)):
+                    print(check_dict[i]['recipe_id']['id'], id)
+                    a =    check_dict[i]['recipe_id']['id']
+                    if (int(id) == a):
+                        print('fuck')
+                        return jsonify(
+                            message = "Already Exists",
+                            status = 308
+                        ), 308
+
+                else:       
+                
+                    new_thing = models.User_Thing.create(
+                       **payload,
+                        recipe_id = recipe_dict['id'],
+                        user_id = user_dict['id']
+                    )
+                    new_thing_dict = model_to_dict(new_thing)
+                    return jsonify(
+                        data = new_thing_dict,
+                        message = "Successfully added recipe to User_things",
+                        status = 200
+                    ), 200
+            except:
+                pass
         except:
             return jsonify(
                 data={},
