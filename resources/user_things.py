@@ -45,21 +45,26 @@ def create_user_thing(id):
                 check = models.User_Thing.select()
                 check_dict = [model_to_dict(thing) for thing in check]
                 x = range(len(check_dict))
-                print(x)
                 for i in range(len(check_dict)):
-                    print(check_dict[i]['recipe_id']['id'], id)
-                    a =    check_dict[i]['recipe_id']['id']
-                    if (int(id) == a):
+                    
+                    if (int(id) == check_dict[i]['recipe_id']['id']):
                         print('fuck')
                         return jsonify(
                             message = "Already Exists",
-                            status = 308
-                        ), 308
+                            status = 409
+                        ), 409
 
-                else:       
-                
+                else:    
+                    dislike = False
+                    favoite = False   
+                    if payload['dislike'] == 'true':
+                        dislike = True
+                    if payload['favorite'] == 'true':
+                        favorite = True
                     new_thing = models.User_Thing.create(
-                       **payload,
+                        #**payload,#this doesnt work
+                        dislike = dislike,
+                        favorite = favorite,
                         recipe_id = recipe_dict['id'],
                         user_id = user_dict['id']
                     )
