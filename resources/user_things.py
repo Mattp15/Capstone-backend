@@ -56,11 +56,12 @@ def create_user_thing(id):
 
                 else:    
                     dislike = False
-                    favoite = False   
+                    favorite = False   
                     if payload['dislike'] == 'true':
                         dislike = True
                     if payload['favorite'] == 'true':
                         favorite = True
+                    print('here')
                     new_thing = models.User_Thing.create(
                         #**payload,#this doesnt work
                         dislike = dislike,
