@@ -37,6 +37,7 @@ def get_current_user_recipes():
 def create_user_thing(id):
     if request.method == "POST":
         payload = request.get_json()
+        print(payload)
         try:
             recipe = models.Recipes.get_by_id(id)
             recipe_dict = model_to_dict(recipe)
@@ -48,24 +49,16 @@ def create_user_thing(id):
                 for i in range(len(check_dict)):
                     
                     if (int(id) == check_dict[i]['recipe_id']['id']):
-                        print('fuck')
                         return jsonify(
                             message = "Already Exists",
                             status = 409
                         ), 409
 
-                else:    
-                    dislike = False
-                    favorite = False   
-                    if payload['dislike'] == 'true':
-                        dislike = True
-                    if payload['favorite'] == 'true':
-                        favorite = True
-                    print('here')
+                else:      
                     new_thing = models.User_Thing.create(
                         #**payload,#this doesnt work
-                        dislike = dislike,
-                        favorite = favorite,
+                        dislike = payload['dislike'],
+                        favorite = payload['favorite'],
                         recipe_id = recipe_dict['id'],
                         user_id = user_dict['id']
                     )
@@ -92,6 +85,7 @@ def create_user_thing(id):
             # deleted_dict = [model_to_dict(thing) for thing in deleted]
             # deleted_dict = model_to_dict(deleted)
             return jsonify(
+                message = "Successfully deleted", 
                 status = 204
             ), 200
         except models.DoesNotExist:
