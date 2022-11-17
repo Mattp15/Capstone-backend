@@ -41,7 +41,6 @@ def create_user_thing(id):
         try:
             recipe = models.Recipes.get_by_id(id)
             recipe_dict = model_to_dict(recipe)
-            user_dict = model_to_dict(current_user)
             try:
                 check = models.User_Thing.select()
                 check_dict = [model_to_dict(thing) for thing in check]

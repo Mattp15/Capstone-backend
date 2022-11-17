@@ -9,7 +9,6 @@ from playhouse.shortcuts import model_to_dict
 users = Blueprint('users', 'users')
 user_list = Blueprint('user_list', 'user_list')
 
-
 #Get's current user
 @users.route('/account', methods=["GET"])
 @login_required
@@ -37,29 +36,60 @@ def handle_users_list():
         pass
 
     if request.method == "GET":
-        pass
+        print(current_user, 'current')
+        users_list = models.User_List.select().where(models.User_List.user_id == current_user)
+        print('here')
+        users_list_dict = [model_to_dict(u_list) for u_list in users_list]
+        print(users_list_dict, 'users_list_dict')
+        return jsonify(
+            data = users_list_dict,
+            message = "Found",
+            status = 200
+        ), 200
+
 
     if request.method == "POST":
         payload = request.get_json()
+        print(payload)
         try:
-            check = models.User_List.select().where(current_user.id == models.User_List.user_id)
-            # and models.User_List.recipe_id.id == payload['id'])
-            check_dict = model_to_dict(check)
-            print(check_dict)
-            if check_dict:
-                return jsonify(
-                    message = "exists"
-                ), 200            
-        except:
+            # check = models.User_List.select().where(models.User_List.user_id == current_user)
+            # # and models.User_List.recipe_id.id == payload['id'])
+            # check_dict = model_to_dict(check)
+            # print(check_dict)
+            # if check_dict:
+
+            # recipe = models.Recipes.get_by_id(payload['id'])
             create = models.User_List.create(
-                user_id = current_user.id,
-                recipe_id = payload['id']
+            user_id = current_user,
+            recipe_id = payload['id']
             )
             return jsonify(
-                message = "Added to list",
-                status = 200
-            ),200
-            
+                message = "exists"
+            ), 200            
+        except:
+            try:
+                try:
+                    exists = models.User_List.select().where(models.User_List.user_id == current_user and models.User_List.recipe_id == payload['id'])
+                    exists_d = model_to_dict(exists)
+                    print(exists_d, 'exists')
+                    return jsonify(
+                        message = "uhh"
+                    )
+                except:
+                    recipe = models.Recipes.get_by_id(payload['id'])
+                    create = models.User_List.create(
+                        user_id = current_user,
+                        recipe_id = payload['id']
+                    )
+                    return jsonify(
+                        message = "Added to list",
+                        status = 200
+                    ),200
+            except models.DoesNotExist:
+                return jsonify(
+                    message = "no such recipe to add",
+                    status = 404
+                ), 404
 
 
 #User Login
