@@ -32,14 +32,35 @@ def get_logged_in_user():
 
 @users.route('/list', methods=["GET", "POST", "DELETE"])
 def handle_users_list():
+    if request.method == "DELETE":
+        payload = request.get_json()
+        pass
+
     if request.method == "GET":
         pass
 
     if request.method == "POST":
-        pass
+        payload = request.get_json()
+        try:
+            check = models.User_List.select().where(current_user.id == models.User_List.user_id)
+            # and models.User_List.recipe_id.id == payload['id'])
+            check_dict = model_to_dict(check)
+            print(check_dict)
+            if check_dict:
+                return jsonify(
+                    message = "exists"
+                ), 200            
+        except:
+            create = models.User_List.create(
+                user_id = current_user.id,
+                recipe_id = payload['id']
+            )
+            return jsonify(
+                message = "Added to list",
+                status = 200
+            ),200
+            
 
-    if request.method == "DELETE":
-        pass
 
 #User Login
 @users.route('/login', methods=["POST"])
