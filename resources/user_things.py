@@ -48,19 +48,20 @@ def create_user_thing(id):
                 x = range(len(check_dict))
                 for i in range(len(check_dict)):
                     
-                    if (int(id) == check_dict[i]['recipe_id']['id']):
+                    if (int(id) == check_dict[i]['recipe_id']['id'] and current_user.id == check_dict[i]['user_id']):
                         return jsonify(
                             message = "Already Exists",
                             status = 409
                         ), 409
 
                 else:      
+
                     new_thing = models.User_Thing.create(
                         #**payload,#this doesnt work
                         dislike = payload['dislike'],
                         favorite = payload['favorite'],
                         recipe_id = recipe_dict['id'],
-                        user_id = user_dict['id']
+                        user_id = current_user.id
                     )
                     new_thing_dict = model_to_dict(new_thing)
                     return jsonify(

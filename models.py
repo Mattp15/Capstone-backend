@@ -40,9 +40,15 @@ class User_Thing(Model):
     class Meta:
         database = DATABASE
 
+class User_List(Model):
+    user_id = IntegerField()
+    recipe_id = ForeignKeyField(Recipes, backref='recipes')
+
+    class Meta:
+        database = DATABASE
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User, User_Thing, Recipes], safe=True)
+    DATABASE.create_tables([User, User_Thing, Recipes, User_List], safe=True)
     print("Connected to the DB and created tables if they didn't exist")
     DATABASE.close()
