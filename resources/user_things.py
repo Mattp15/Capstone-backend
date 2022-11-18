@@ -44,7 +44,6 @@ def create_user_thing(id):
             try:
                 check = models.User_Thing.select()
                 check_dict = [model_to_dict(thing) for thing in check]
-                x = range(len(check_dict))
                 for i in range(len(check_dict)):
                     
                     if (int(id) == check_dict[i]['recipe_id']['id'] and current_user.id == check_dict[i]['user_id']):
@@ -56,7 +55,7 @@ def create_user_thing(id):
                 else:      
 
                     new_thing = models.User_Thing.create(
-                        #**payload,#this doesnt work
+                        #**payload,this doesnt work
                         dislike = payload['dislike'],
                         favorite = payload['favorite'],
                         recipe_id = recipe_dict['id'],
