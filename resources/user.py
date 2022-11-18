@@ -33,12 +33,23 @@ def get_logged_in_user():
 def handle_users_list():
     if request.method == "DELETE":
         payload = request.get_json()
-        pass
+        try:
+            deleted = models.User_List.delete().where(models.User_List.recipe_id.id == payload['id'] and models.User_List.user_id == current_user)
+            deleted.execute()
+            return jsonify(
+                message = "Item has been deleted from users active list",
+                status = 205,
+            ), 205
+
+        except models.DoesNotExist:
+            return jsonify(
+                message = "No such item to delete",
+                status = 404
+            ), 404
 
     if request.method == "GET":
         print(current_user, 'current')
         users_list = models.User_List.select().where(models.User_List.user_id == current_user)
-        print('here')
         users_list_dict = [model_to_dict(u_list) for u_list in users_list]
         print(users_list_dict, 'users_list_dict')
         return jsonify(
@@ -52,7 +63,7 @@ def handle_users_list():
         payload = request.get_json()
         try:
             check_recipe_exists = models.Recipes.get_by_id(payload['id'])
-            exists = models.User_List.select().where(models.User_List.user_id == current_user)
+            exists = models.User_List.select().where(models.User_List.user_id == current_user and models.User_List.recipe_id)
             exists_dict = [model_to_dict(item) for item in exists]
             for i in range(len(exists_dict)):
                 if exists_dict[i]['recipe_id']['id'] == payload['id']:

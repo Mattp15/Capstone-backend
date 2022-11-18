@@ -81,12 +81,10 @@ def create_user_thing(id):
 
             deleted = models.User_Thing.delete().where(current_user == models.User_Thing.user_id and models.User_Thing.id == id)
             deleted.execute()
-            # deleted_dict = [model_to_dict(thing) for thing in deleted]
-            # deleted_dict = model_to_dict(deleted)
             return jsonify(
                 message = "Successfully deleted", 
                 status = 204
-            ), 200
+            ), 204
         except models.DoesNotExist:
             return jsonify(
 
