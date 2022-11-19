@@ -101,6 +101,24 @@ def handle_users_list():
                 message = "no such recipe to add",
                 status = 404
             ), 404
+
+@users.route('/list/<id>', methods=["GET"])
+def get_user_list_by_id(id):
+    try:
+        recipe = models.User_List.get_by_id(id)
+        print('here')
+        recipe_dict = model_to_dict(recipe)
+        return jsonify(
+            data = recipe_dict,
+            message = "Found Recipe",
+            status = 200
+        ), 200
+        
+    except models.DoesNotExist:
+        return jasonify(
+            message = "Recipe is not in list",
+            status = 404
+        ), 404
 #User Login
 @users.route('/login', methods=["POST"])
 def login():

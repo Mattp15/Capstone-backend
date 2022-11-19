@@ -50,7 +50,6 @@ def create_recipe():
         try:
             models.Recipes.get(models.Recipes.title == recipes_objects.recipes[i]['title'])
         except models.DoesNotExist:          
-
             recipe = models.Recipes.create(
                 author_credit = recipes_objects.recipes[i]['author_credit'],
                 calories = recipes_objects.recipes[i]['calories'],
