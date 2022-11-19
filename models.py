@@ -16,14 +16,16 @@ class User(UserMixin, Model):
 
 class Recipes(Model):
     author_credit = CharField()
-    calories = CharField()
-    carbohydrate = CharField()
-    fat = CharField()
+    calories = IntegerField()
+    carbohydrate = IntegerField()
+    fat = IntegerField()
     image = CharField()
     ingredients = CharField()
     instructions = CharField()
-    protein = CharField()
+    protein = IntegerField()
+    servings = IntegerField()
     shopping_list = CharField()
+    time = IntegerField()
     title = CharField(unique=True)
 
     class Meta:
