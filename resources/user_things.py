@@ -44,6 +44,7 @@ def create_user_thing(id):
             try:
                 check = models.User_Thing.select()
                 check_dict = [model_to_dict(thing) for thing in check]
+                x = range(len(check_dict))
                 for i in range(len(check_dict)):
                     
                     if (int(id) == check_dict[i]['recipe_id']['id'] and current_user.id == check_dict[i]['user_id']):
@@ -78,16 +79,18 @@ def create_user_thing(id):
     elif request.method == "DELETE":
         #deletes the User_Thing table by user_id and User_Thing.id == passed param called id
         try:          
-
-            deleted = models.User_Thing.delete().where(current_user == models.User_Thing.user_id and models.User_Thing.id == id)
+            deleted = models.User_Thing.delete().where(current_user == models.User_Thing.user_id and models.User_Thing.id == int(id))
             deleted.execute()
             return jsonify(
+                data = {},
                 message = "Successfully deleted", 
-                status = 204
-            ), 204
+                status = 205
+            ), 205
         except models.DoesNotExist:
             return jsonify(
-
+                data = {},
+                message = 'No such item exists in UserThings', 
+                status = 404
             ), 404
 
             
