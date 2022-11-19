@@ -17,8 +17,9 @@ class User(UserMixin, Model):
 class Recipes(Model):
     author_credit = CharField()
     calories = IntegerField()
-    carbohydrate = IntegerField()
+    carbs = IntegerField()
     category = CharField()
+    description = CharField()
     fat = IntegerField()
     image = CharField()
     ingredients = CharField()
