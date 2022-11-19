@@ -33,6 +33,19 @@ def get_logged_in_user():
 def handle_users_list():
     if request.method == "DELETE":
         payload = request.get_json()
+        if payload['id'] == 0:
+            try:
+                full_delete = models.User_List.delete().where(models.User_List.user_id == current_user)
+                full_delete.execute()
+                return jsonify(
+                    message = f"deleted whole User_list for user_id:  {current_user}",
+                    status = 200
+                ), 200
+            except models.DoesNotExist:
+                return jsonify(
+                    message = "no such user_list",
+                    status = 404
+                ), 404
         try:
             print(current_user, payload['id'])
             # deleted = models.User_List.delete().where(models.User_List.recipe_id.id == payload['id'] and models.User_List.user_id == current_user)
