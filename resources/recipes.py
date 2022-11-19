@@ -61,3 +61,7 @@ def create_recipe():
             message = "Recipe succesfully added to database",
             status = 201
         ), 201
+
+with open('./resources/recipes.csv') as recipe_csv:
+    data = recipe_csv.read()
+    print(data.split(', '))

@@ -48,7 +48,6 @@ def handle_users_list():
                 ), 404
         try:
             print(current_user, payload['id'])
-            # deleted = models.User_List.delete().where(models.User_List.recipe_id.id == payload['id'] and models.User_List.user_id == current_user)
             test = models.User_List.get_by_id(payload['id'])
             deleted = models.User_List.delete().where(models.User_List.id == payload['id'])
             deleted.execute()
