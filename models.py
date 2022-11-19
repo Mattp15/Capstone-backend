@@ -18,6 +18,7 @@ class Recipes(Model):
     author_credit = CharField()
     calories = IntegerField()
     carbohydrate = IntegerField()
+    category = CharField()
     fat = IntegerField()
     image = CharField()
     ingredients = CharField()
