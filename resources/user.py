@@ -10,12 +10,11 @@ users = Blueprint('users', 'users')
 user_list = Blueprint('user_list', 'user_list')
 
 #Get's current user
-@users.route('/account', methods=["GET"])
+@users.route('/user', methods=["GET"])
 @login_required
 def get_logged_in_user():
     try:
         user_dict = model_to_dict(current_user)
-        print(user_dict)
         user_dict.pop('password')
         return jsonify(
             data = user_dict,
@@ -47,7 +46,6 @@ def handle_users_list():
                     status = 404
                 ), 404
         try:
-            print(current_user, payload['id'])
             test = models.User_List.get_by_id(payload['id'])
             deleted = models.User_List.delete().where(models.User_List.id == payload['id'])
             deleted.execute()
@@ -63,10 +61,8 @@ def handle_users_list():
             ), 404
 
     if request.method == "GET":
-        print(current_user, 'current')
         users_list = models.User_List.select().where(models.User_List.user_id == current_user)
         users_list_dict = [model_to_dict(u_list) for u_list in users_list]
-        print(users_list_dict, 'users_list_dict')
         return jsonify(
             data = users_list_dict,
             message = "Found",
@@ -86,7 +82,6 @@ def handle_users_list():
                     message = "recipe is already in your list"
                     )
                 
-            print(len(exists_dict))
             recipe = models.Recipes.get_by_id(payload['id'])
             create = models.User_List.create(
                 user_id = current_user,
@@ -106,7 +101,6 @@ def handle_users_list():
 def get_user_list_by_id(id):
     try:
         recipe = models.User_List.get_by_id(id)
-        print('here')
         recipe_dict = model_to_dict(recipe)
         return jsonify(
             data = recipe_dict,
@@ -115,7 +109,7 @@ def get_user_list_by_id(id):
         ), 200
         
     except models.DoesNotExist:
-        return jasonify(
+        return jsonify(
             message = "Recipe is not in list",
             status = 404
         ), 404
@@ -130,7 +124,6 @@ def login():
             del user_dict['password']
             login_user(user)
             session["name"] = payload["email"]
-            print(session['name'])
             return jsonify(
                 data = user_dict,
                 message = "Logged in successfully",
