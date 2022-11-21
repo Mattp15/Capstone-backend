@@ -1,5 +1,5 @@
 import models, re, random
-from flask import request, jsonify, Blueprint, session
+from flask import request, jsonify, Blueprint, session, redirect
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
@@ -9,24 +9,25 @@ from playhouse.shortcuts import model_to_dict
 users = Blueprint('users', 'users')
 user_list = Blueprint('user_list', 'user_list')
 
-#Get's current user
-@users.route('/user', methods=["GET"])
-@login_required
-def get_logged_in_user():
-    try:
-        user_dict = model_to_dict(current_user)
-        user_dict.pop('password')
-        return jsonify(
-            data = user_dict,
-            message = "Current User",
-            status = 200
-        ),200
-    except:
-        return jsonify(
-            data ={},
-            message = "No user logged in",
-            status = 404
-        ), 404
+#Get's current user 
+#prolly dont need
+# @users.route('/user', methods=["GET"])
+# @login_required
+# def get_logged_in_user():
+#     try:
+#         user_dict = model_to_dict(current_user)
+#         user_dict.pop('password')
+#         return jsonify(
+#             data = user_dict,
+#             message = "Current User",
+#             status = 200
+#         ),200
+#     except:
+#         return jsonify(
+#             data ={},
+#             message = "No user logged in",
+#             status = 404
+#         ), 404
 
 @users.route('/list', methods=["GET", "POST", "DELETE"])
 def handle_users_list():
@@ -123,7 +124,9 @@ def login():
         if(check_password_hash(user_dict['password'], payload['password'])):
             del user_dict['password']
             login_user(user)
+            print(user_dict)
             session["name"] = payload["email"]
+            redirect('/user')
             return jsonify(
                 data = user_dict,
                 message = "Logged in successfully",
