@@ -43,7 +43,7 @@ recipes = [
         "instructions":"Preheat the oven to 425 degrees F (220 degrees C.)|Combine chicken, carrots, peas, and celery in a saucepan; add water to cover and bring to a boil. Boil for 15 minutes, then remove from the heat and drain.|While the chicken is cooking, melt butter in another saucepan over medium heat. Add onion and cook until soft and translucent, 5 to 7 minutes. Stir in flour, salt, pepper, and celery seed. Slowly stir in chicken broth and milk. Reduce heat to medium-low and simmer until thick, 5 to 10 minutes. Remove from heat and set aside.|Place chicken and vegetables in the bottom pie crust. Pour hot liquid mixture over top. Cover with top crust, seal the edges, and cut away any excess dough. Make several small slits in the top crust to allow steam to escape.|Bake in the preheated oven until pastry is golden brown and filling is bubbly, 30 to 35 minutes. Cool for 10 minutes before serving.",
         "protein": 18,
         "servings": 8,
-        "shopping_list":"1 pound-chicken-breast meat,0.25 lb-carrots produce,0.25 bag-frozen-peas frozen,0.2 lb-celery spice,.25 lb-butter dairy,0.33 onion produce,0.1 lb-all-purpose-flour dry-good,0.001 lb-salt spice,0.01 black-pepper spice,0.01 celery-seed spice,0.66 liter-chicken-broth,0.07 gallon-milk dairy,2 pie-crust frozen",
+        "shopping_list":"1 pound-chicken-breast meat,0.25 lb-carrots produce,0.25 bag-frozen-peas frozen,0.2 lb-celery spice,.25 lb-butter dairy,0.33 onion produce,0.1 lb-all-purpose-flour dry-good,0.001 lb-salt spice,0.01 black-pepper spice,0.01 celery-seed spice,0.66 liter-chicken-broth dry-good,0.07 gallon-milk dairy,2 pie-crust frozen",
         "time": 80,
         "title": "Chicken Pot Pie",
     },
