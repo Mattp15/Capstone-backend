@@ -3,6 +3,7 @@ from flask_session import Session
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
+
 import os
 from dotenv import load_dotenv
 
@@ -25,12 +26,18 @@ app.secret_key = os.environ.get("APP_SECRET")
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+sess = Session()
+sess.init_app(app)
+
 @login_manager.user_loader
 def load_user(userid):
     try:
         return models.User.get(models.User.id == userid)
     except models.DoesNotExist:
         pass
+
+
+
 
 CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(recipes, origins=['http://localhost:3000'], supports_credentials=True)

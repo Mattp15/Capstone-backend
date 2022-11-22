@@ -1,5 +1,5 @@
 import models, random
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from playhouse.shortcuts import model_to_dict
 from flask_login import login_required, current_user
 
@@ -18,6 +18,7 @@ user_things = Blueprint('user_things', 'user_things')
 @user_things.route('/', methods=["GET"])
 def get_current_user_recipes():
         try:
+            session['email']
             user_things = models.User_Thing.select().where(models.User_Thing.user_id == current_user)
             things_dict = [model_to_dict(thing) for thing in user_things]
             return jsonify(
@@ -32,6 +33,10 @@ def get_current_user_recipes():
                 status = 404
             ), 404
 
+        return jsonify(
+            message = "Please log in",
+            status = 500
+        ), 500
 #Creates a User_Thing for current user/Deletes
 @user_things.route('/<id>', methods=["POST", "DELETE"])
 def create_user_thing(id):

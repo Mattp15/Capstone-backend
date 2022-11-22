@@ -46,6 +46,7 @@ def get_recipe(id):
 
 @recipes.route('/add', methods=["POST"])
 def create_recipe():
+    recipe_dict = []
     for i in range(len(recipes_objects.recipes)):
         try:
             models.Recipes.get(models.Recipes.title == recipes_objects.recipes[i]['title'])
@@ -66,7 +67,7 @@ def create_recipe():
                 time = recipes_objects.recipes[i]['time'],
                 title = recipes_objects.recipes[i]['title'],
             )
-            recipe_dict = model_to_dict(recipe)
+            recipe_dict.append(model_to_dict(recipe))
     return jsonify(
         data = recipe_dict,
         message = "Recipe succesfully added to database",
