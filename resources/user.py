@@ -106,19 +106,27 @@ def handle_users_list():
 @users.route('/list/<id>', methods=["GET"])
 def get_user_list_by_id(id):
     try:
-        recipe = models.User_List.get_by_id(id)
-        recipe_dict = model_to_dict(recipe)
+        print(session['email'])
+
+        try:
+            recipe = models.User_List.get_by_id(id)
+            recipe_dict = model_to_dict(recipe)
+            return jsonify(
+                data = recipe_dict,
+                message = "Found Recipe",
+                status = 200
+            ), 200
+
+        except models.DoesNotExist:
+            return jsonify(
+                message = "Recipe is not in list",
+                status = 404
+            ), 404
+    except:
         return jsonify(
-            data = recipe_dict,
-            message = "Found Recipe",
-            status = 200
-        ), 200
-        
-    except models.DoesNotExist:
-        return jsonify(
-            message = "Recipe is not in list",
-            status = 404
-        ), 404
+            message = "not logged in",
+            status = 500
+        ), 500
 #User Login
 @users.route('/login', methods=["POST"])
 def login():
@@ -148,20 +156,18 @@ def login():
 @users.route('/logout', methods=["GET"])
 @login_required
 def logout_user():
-    # user = model_to_dict(current_user)
     
     try:
     
-        # user_dict = model_to_dict(current_user)
+        user_dict = model_to_dict(current_user)
         logout_user()
-        # user = session['_get_user']
 
         
-        # del user_dict['password']
+        del user_dict['password']
         session.pop('email', default=None)
         # print(1)
         return jsonify(
-            # data = user_dict,
+            data = user_dict,
             message = f'User has been logged out',
             status = 200
         ), 200
