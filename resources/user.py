@@ -158,7 +158,7 @@ def login():
 def logout_user():
     
     try:
-    
+        print(session['email'])
         user_dict = model_to_dict(current_user)
         logout_user()
 
