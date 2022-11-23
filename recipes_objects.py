@@ -11,7 +11,7 @@ recipes = [
         "instructions":"Working over a bowl to collect juice, section grapefruits into suprêmes, cutting away all peel, pith, and membranes. Squeeze remaining skin and membranes into the bowl to extract as much juice as possible.|Preheat the oven to 375 degrees F (190 degrees C).|Stir together salt and pepper in a small bowl. Slip fingers beneath the skin of the chicken breast and thighs to loosen it from the meat. Rub salt mixture under skin, inside cavity, and over skin. Tuck half the suprêmes and a few parsley sprigs into chicken cavity. Transfer chicken, breast side up, to a rack in a baking dish or a cast-iron skillet.|Tie legs together with kitchen twine; fold wing tips back and tuck under chicken. Halve bacon; drape over breast in a herringbone pattern, overlapping as needed. Drizzle with oil, coating any uncovered skin.|Roast in the preheated oven for 40 minutes. Pour grapefruit juice over chicken. Continue roasting 35 to 40 minutes or until an instant-read thermometer inserted into thickest parts of thigh and breast registers 170°F. Tent with foil; let rest at least 15 minutes. Discard kitchen twine. Remove and reserve suprêmes from chicken cavity.|For sauce, warm cognac in a small stainless-steel or copper (not nonstick) skillet over medium heat for a few seconds until shimmering at the edges. Remove from heat.|Carefully ignite with a stick lighter or long match. Let burn for 1 minute. Add roasted grapefruit suprêmes, the broth, and half-and-half; heat through. Season to taste with salt and pepper.|Serve chicken on a platter with remaining fresh suprêmes (or extra grapefruit wedges) and parsley sprigs. Spoon warm sauce over carved chicken.",
         "protein": 4,
         "servings": 4,
-        "shopping_list": "3 grapefruit produce,0.001 box-of-salt spice,0.01 black-pepper spice,1 whole-chicken meat,0.25 package-bacon meat,0.01 liter-oil dry-good,0.025 bottle-Conac dry-good,0.1 liter-chicken-broth dry-good,0.25 quart-of-cream dairy",
+        "shopping_list": "3 grapefruit produce,0.001 box-of-salt spice,0.01 black-pepper spice,1 whole-chicken meat,0.25 package-bacon meat,0.01 liter-olive-oil dry-good,0.025 bottle-Conac dry-good,0.1 liter-chicken-broth dry-good,0.25 quart-of-cream dairy",
         "title": "Roast Chicken with Grapefruit",
         "time": "1 hour 50 minutes",
     },
@@ -43,7 +43,7 @@ recipes = [
         "instructions":"Preheat the oven to 425 degrees F (220 degrees C.)|Combine chicken, carrots, peas, and celery in a saucepan; add water to cover and bring to a boil. Boil for 15 minutes, then remove from the heat and drain.|While the chicken is cooking, melt butter in another saucepan over medium heat. Add onion and cook until soft and translucent, 5 to 7 minutes. Stir in flour, salt, pepper, and celery seed. Slowly stir in chicken broth and milk. Reduce heat to medium-low and simmer until thick, 5 to 10 minutes. Remove from heat and set aside.|Place chicken and vegetables in the bottom pie crust. Pour hot liquid mixture over top. Cover with top crust, seal the edges, and cut away any excess dough. Make several small slits in the top crust to allow steam to escape.|Bake in the preheated oven until pastry is golden brown and filling is bubbly, 30 to 35 minutes. Cool for 10 minutes before serving.",
         "protein": 18,
         "servings": 8,
-        "shopping_list":"1 pound(s)-chicken-breast meat,0.25 lb-carrots produce,0.25 bag-frozen-peas frozen,0.2 lb-celery produce,.25 lb-butter dairy,0.33 onion produce,0.1 lb-all-purpose-flour dry-good,0.001 lb-salt spice,0.01 black-pepper spice,0.01 celery-seed spice,0.66 liter-chicken-broth dry-good,0.07 gallon-milk dairy,2 pie-crust frozen",
+        "shopping_list":"1 pound(s)-chicken-breast meat,0.25 lb-carrots produce,0.25 bag-frozen-peas frozen,0.2 lb-celery produce,.25 lb-butter dairy,0.33 onion produce,0.1 lb-all-purpose-flour dry-good,0.001 box-of-salt spice,0.01 black-pepper spice,0.01 celery-seed spice,0.66 liter-chicken-broth dry-good,0.07 gallon-milk dairy,2 pie-crust frozen",
         "time": "1 hour 20 minutes",
         "title": "Chicken Pot Pie",
     },
@@ -88,7 +88,7 @@ recipes = [
         "instructions":"Place almonds in a frying pan. Toast over medium-high heat, shaking frequently. Watch carefully, as they burn easily.|Mix together mayonnaise, lemon juice, and pepper in a medium bowl. Toss with chicken, toasted almonds, and celery.",
         "protein": 44,
         "servings": 2,
-        "shopping_list":"0.2 lb-almonds produce,0.1 mayonnaise dry-good,0.5 lemon produce,0.001 black-pepper spice,0.2 lb-celery produce,1 lb-chicken-breast meat" ,
+        "shopping_list":"0.2 lb-almonds produce,0.1 mayonnaise dry-good,0.5 lemon produce,0.001 black-pepper spice,0.2 lb-celery produce,1 pound(s)-chicken-breast meat" ,
         "time": "10 minutes",
         "title": "Best Chicken Salad",
     },    
@@ -104,7 +104,7 @@ recipes = [
         "instructions":"Preheat the broiler. Lightly grease a baking sheet.|Toss chicken with fajita seasoning, then spread onto the prepared baking sheet. Place under the broiler and cook until chicken is cooked through and no longer pink in the center, about 5 minutes.|Preheat the oven to 350 degrees F (175 degrees C).|Heat oil in a large saucepan over medium heat. Stir in bell peppers, onion, and broiled chicken. Cook and stir until vegetables have softened, about 10 minutes.|Layer half of each tortilla with chicken and vegetable mixture, Cheddar cheese, Monterey Jack cheese, and bacon bits. Fold tortillas in half and place onto a baking sheet.|Bake quesadillas in the preheated oven until cheeses have melted, about 10 minutes. Cut each quesadilla into wedges and serve.",
         "protein": 28,
         "servings": 10,
-        "shopping_list":"1 lb-chicken-breast meat,1 packet-fajita-seasoning spice,2 red-bell-pepper produce,2 green-bell-pepper produce,1 onion produce,1 10-pack-flour-tortilla dry-good,1 (8oz)-package-shredded-cheddar-cheese dairy,1 (8oz)-package-shredded-montery-jack-cheese dairy" ,
+        "shopping_list":"1 pound(s)-chicken-breast meat,1 packet-fajita-seasoning spice,2 red-bell-pepper produce,2 green-bell-pepper produce,1 onion produce,1 10-pack-flour-tortilla dry-good,1 (8oz)-package-shredded-cheddar-cheese dairy,1 (8oz)-package-shredded-montery-jack-cheese dairy,0.01 liter-oil dry-good" ,
         "time": "45 minutes",
         "title": "Chicken Quesadillas",
     },
@@ -143,37 +143,225 @@ recipes = [
     },
         {
         "author_credit":"https://www.allrecipes.com/recipe/72508/the-best-vegetarian-chili-in-the-world/",
-        "calories": 0,
-        "carbs": 0,
+        "calories": 391,
+        "carbs": 59,
         "category": "Vegetarian",
         "description": "This spicy vegetarian chili is ready in no time and packed with vegetables, beans, and flavor! Break out your soup pot and fix up a batch of this delicious chili — it tastes even better the next day.",
-        "fat": 0,
-        "image":".jpg",
-        "ingredients":"",
-        "instructions":"",
-        "protein": 0,
-        "servings": 0,
-        #TODO"shopping_list":"",
-        "time": 0,
+        "fat": 8,
+        "image":"https://www.allrecipes.com/thmb/HgB1B3W7PQ9Dw_TkaXcmfXvX6u8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/9215371-The-Best-Vegetarian-Chili-in-The-World-NatashaForestBrown-1x1-1-1290da8f7186491aa02b32a8ba57306d.jpg",
+
+        "ingredients":"1 tablespoon olive oil,½ medium onion, chopped,2 tablespoons dried oregano,1 tablespoon salt,1 teaspoon ground cumin,2 bay leaves,2 stalks celery, chopped,2 green bell peppers, chopped,2 jalapeno peppers, chopped,3 cloves garlic, chopped,2 (4 ounce) cans chopped green chile peppers, drained,2 (12 ounce) packages vegetarian burger, crumbled,3 (28 ounce) cans whole peeled tomatoes, crushed,¼ cup chili powder,1 tablespoon ground black pepper,1 (15 ounce) can kidney beans, drained,1 (15 ounce) can garbanzo beans, drained,1 (15 ounce) can black beans,1 (15 ounce) can whole kernel corn",
+
+        "instructions":"Heat olive oil in a large pot over medium heat. Stir in onion and season with oregano, salt, cumin, and bay leaves. Cook and stir until onion is tender; stir in celery, green bell peppers, jalapeños, and garlic. Add green chile peppers and cook until heated through. Stir in vegetarian burger crumbles; reduce heat to low, cover pot, and simmer for 5 minutes.|Stir in tomatoes; season with chili powder and black pepper. Stir in kidney beans, garbanzo beans, and black beans. Bring to a boil, reduce heat to low, and simmer for 45 minutes.|Stir in the corn, and continue cooking for 5 minutes before serving.",
+        "protein": 28,
+        "servings": 8,
+        "shopping_list":"0.02 liter-olive-oil dry-good,0.5 onion produce,0.1 dried-oregano spice,0.01 box-of-salt spice,0.01 ground-cumin spice,0.01 dried-bay-leaves spice,0.2 lb-celery produce,2 green-bell-peppers produce,2 jalapeno-peppers produce, 2 (4oz)-cans-chopped-green-chilie-peppers dry-good,2 (12oz)-package(s)-vegetarian-burger frozen,3 (28oz)-whole-peeled-tomato dry-good,0.5 (12oz)-chile-powder spice,0.05 black-pepper,1 (15oz)-can-kidney-beans dry-good,1 (15oz)-can-garbanzo-beans dry-good,1 (15oz)-can-black-beans dry-good,1 (15oz)-can-whole-kernel-corn dry-good",
+        "time": "1 hour 15 minutes",
         "title": "The Best Vegetarian Chili in the World",
     },
         # {
     #     "author_credit":"",
+
     #     "calories": 0,
+
     #     "carbs": 0,
+
     #     "category": "",
+
     #     "description": "",
+
     #     "fat": 0,
+
     #     "image":".jpg",
+
     #     "ingredients":"",
+
     #     "instructions":"",
+
     #     "protein": 0,
+
     #     "servings": 0,
+
     #     "shopping_list":"ingredient amount sale_volume" ,
+
     #     "time": 0,
+
     #     "title": "",
     # },
+            # {
+    #     "author_credit":"",
 
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
+            # {
+    #     "author_credit":"",
+
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
+            # {
+    #     "author_credit":"",
+
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
+            # {
+    #     "author_credit":"",
+
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
+            # {
+    #     "author_credit":"",
+
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
+            # {
+    #     "author_credit":"",
+
+    #     "calories": 0,
+
+    #     "carbs": 0,
+
+    #     "category": "",
+
+    #     "description": "",
+
+    #     "fat": 0,
+
+    #     "image":".jpg",
+
+    #     "ingredients":"",
+
+    #     "instructions":"",
+
+    #     "protein": 0,
+
+    #     "servings": 0,
+
+    #     "shopping_list":"ingredient amount sale_volume" ,
+
+    #     "time": 0,
+    
+    #     "title": "",
+    # },
 
 
 ]
