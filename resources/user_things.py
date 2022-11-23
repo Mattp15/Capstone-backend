@@ -33,10 +33,6 @@ def get_current_user_recipes():
                 status = 404
             ), 404
 
-        return jsonify(
-            message = "Please log in",
-            status = 500
-        ), 500
 #Creates a User_Thing for current user/Deletes
 @user_things.route('/<id>', methods=["POST", "DELETE"])
 def create_user_thing(id):
