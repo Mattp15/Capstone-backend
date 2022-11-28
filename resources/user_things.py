@@ -34,11 +34,11 @@ def get_current_user_recipes():
             ), 404
 
 #Creates a User_Thing for current user/Deletes
-@user_things.route('/<id>', methods=["POST", "DELETE"])
+@user_things.route('/<id>', methods=["POST", "DELETE", "PUT"])
 def create_user_thing(id):
     if request.method == "POST":
         payload = request.get_json()
-        print(payload)
+
         try:
             recipe = models.Recipes.get_by_id(id)
             recipe_dict = model_to_dict(recipe)
@@ -93,5 +93,21 @@ def create_user_thing(id):
                 message = 'No such item exists in UserThings', 
                 status = 404
             ), 404
-
+    elif request.method == 'PUT':
+        payload = request.get_json()
+        update = models.User_Thing.update(
+            dislike = payload['dislike'],
+            favorite = payload['favorite'],
+            id = int(id),
+            recipe_id = payload['recipe_id'],
+            user_id = current_user
+        ).where(models.User_Thing.id == id)
+        update.execute()
+        query = models.User_Thing.get_by_id(id)
+        query_dict = model_to_dict(query)
+        return jsonify(
+            data = query_dict,
+            message = "Updated user thing",
+            status =200
+        ), 200
             
