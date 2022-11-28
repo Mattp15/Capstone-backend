@@ -48,7 +48,9 @@ app.register_blueprint(users, url_prefix='/user')
 app.register_blueprint(recipes, url_prefix='/recipes')
 app.register_blueprint(user_things, url_prefix='/things')
 
-
+if os.environ.get('FLASK_ENV') != 'development':
+    print('/non heroku!')
+    models.initialize()
 
 if __name__ == '__main__':
     models.initialize()
