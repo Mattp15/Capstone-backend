@@ -22,7 +22,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = 'filesystem'
 Session(app)
 
-app.secret_key = os.environ.get("FLASK_APP_SECRET")
+app.secret_key = os.environ.get("APP_SECRET")
 login_manager = LoginManager()
 login_manager.init_app(app)
 
