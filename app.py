@@ -43,9 +43,9 @@ def load_user(userid):
 
 
 
-CORS(users, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com/'], supports_credentials=True)
-CORS(recipes, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com/'], supports_credentials=True)
-CORS(user_things, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com/'], supports_credentials=True)
+CORS(users, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com'], supports_credentials=True)
+CORS(recipes, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com'], supports_credentials=True)
+CORS(user_things, origins=['http://localhost:3000', 'https://lettuce-turnip-the-beet.herokuapp.com'], supports_credentials=True)
 
 
 app.register_blueprint(users, url_prefix='/user')
